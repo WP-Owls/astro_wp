@@ -1,0 +1,7 @@
+---
+const { post } = Astro.props
+---
+<div>
+  <h2>{post.title.rendered}</h2>
+  <a href={`/` + post.slug}>Read more</a>
+</div>

@@ -1,0 +1,22 @@
+---
+import {fetchAPI} from '../lib/api.js';
+import Article from '../components/Article.astro';
+import Base from '../layouts/Base.astro';
+
+const data = await fetchAPI('articles?per_page=4');
+---
+<Base>
+    <article class="prose lg:prose-xl mx-auto">
+    <h1>Articles archive</h1>
+    <div>
+        <ul>
+            {data.map(post => <li><Article post={post}/></li>)}
+        </ul>
+    </div>
+     <div class="text-center mt-20">
+        <div>
+            <a href="/page/" class="w-full bg-blue-500 px-4 py-3 rounded text-white font-semibold hover:bg-blue-600 transition duration-200 each-in-out">See more articles</a>
+        </div>
+    </div>
+    </article>
+</Base>
